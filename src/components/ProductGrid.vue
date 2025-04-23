@@ -13,29 +13,43 @@ defineProps({
 
 <template>
   <div class="product-grid">
-    <a
-      v-for="product in products"
-      :key="product.ID"
-      :href="product.ProductURL"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="product-item"
-    >
-      <img :src="`${product.ImageURL}?w=100`" :alt="product.Name" class="product-thumbnail" />
-      <div class="product-overlay">
-        <span class="product-name">{{ product.Name }}</span>
-      </div>
-    </a>
+    <div class="product-grid-container">
+      <template v-if="products.length > 0">
+        <a
+          v-for="product in products"
+          :key="product.ID"
+          :href="product.ProductURL"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="product-item"
+        >
+          <img :src="`${product.ImageURL}?w=100`" :alt="product.Name" class="product-thumbnail" />
+          <div class="product-overlay">
+            <span class="product-name">{{ product.Name }}</span>
+          </div>
+        </a>
+      </template>
+      <p v-else class="no-products">No products found</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .product-grid {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.product-grid-container {
+  display: flex;
   flex-wrap: wrap; /* Allow items to wrap to the next row */
   gap: 1rem; /* Space between items */
   justify-content: center; /* Center items horizontally */
-  width: 100%;
+  padding: 1rem 0;
+  margin: auto;
 }
 
 .product-item {
@@ -82,5 +96,12 @@ defineProps({
   font-size: 0.9rem;
   text-align: center;
   padding: 0.5rem;
+}
+
+.no-products {
+  font-size: 1.2rem;
+  color: #888; /* Subtle gray color for the message */
+  text-align: center;
+  margin: 2rem;
 }
 </style>
