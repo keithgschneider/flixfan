@@ -35,7 +35,7 @@ onUnmounted(() => {
 <style scoped>
 .scroll-to-top {
   position: fixed;
-  bottom: 2rem;
+  bottom: 6rem;
   right: 2rem;
   background-color: #007bff; /* Primary blue color */
   color: white;

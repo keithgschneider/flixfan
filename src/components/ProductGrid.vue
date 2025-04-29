@@ -41,6 +41,7 @@ defineProps({
   align-items: center;
   flex-direction: column;
   padding: 1rem;
+  padding-bottom: 60px; /* Space for the sticky footer */
 }
 
 .product-grid-container {

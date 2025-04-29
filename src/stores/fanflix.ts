@@ -1,11 +1,28 @@
-import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Campaign } from '../types/Campaign'
-import type { Product } from '../types/Product' // Import the Product type
+import type { Product } from '../types/Product'
+import type { Game } from '@/types/Game'
 
-export const useFanflixStore = defineStore('fanflix', () => {
-  const campaigns = ref<Campaign[]>([]) // Store campaigns as an array of Campaign objects
-  const products = ref<Product[]>([]) // Store products as an array of Product objects
+// Define the FanflixStore interface
+export interface FanflixStore {
+  campaigns: Campaign[]
+  products: Product[]
+  games: Game[]
+}
 
-  return { campaigns, products }
+// Define the Pinia store
+export const useFanflixStore = defineStore('fanflix', {
+  state: (): FanflixStore => ({
+    campaigns: [],
+    products: [],
+    games: [],
+  }),
+  actions: {
+    // Clear the store by resetting campaigns and products
+    clear() {
+      this.campaigns = []
+      this.products = []
+      this.games = []
+    },
+  },
 })
