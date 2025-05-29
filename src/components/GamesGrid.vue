@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import type { Game } from '../types/Game' // Import the Game type
 
 // Props for the games grid
@@ -15,8 +14,12 @@ defineProps({
   <div class="games-grid">
     <div class="games-container">
       <div v-for="game in games" :key="game.ID" class="game-card">
-        <img :src="`${game.ParodyArtworkURL}?w=400`" :alt="game.Title" class="game-image" />
-        <p class="game-title">{{ game.Title }}</p>
+        <div class="image-wrapper">
+          <img :src="`${game.ParodyArtworkURL}?w=400`" :alt="game.Title" class="game-image" />
+          <div class="overlay">
+            <span class="game-title">{{ game.Title }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -33,12 +36,12 @@ defineProps({
 }
 .games-container {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next row */
-  justify-content: center; /* Center items horizontally */
-  align-items: flex-start; /* Align items to the top */
-  gap: 1rem; /* Add spacing between items */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1rem;
-  background-color: #121212; /* Optional: Add a background color */
+  background-color: #121212;
 }
 
 .game-card {
@@ -51,19 +54,48 @@ defineProps({
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   color: white;
-  width: 200px; /* Set a fixed width for each card */
-  max-width: 300px; /* Optional: Set a max width */
+  width: 200px;
+  max-width: 300px;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .game-image {
   width: 100%;
   height: auto;
   object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: rgba(20, 20, 20, 0.7);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .game-title {
-  margin: 0.5rem 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-align: center;
 }
 </style>

@@ -8,6 +8,7 @@ export interface FanflixStore {
   campaigns: Campaign[]
   products: Product[]
   games: Game[]
+  loading: boolean
 }
 
 // Define the Pinia store
@@ -16,6 +17,7 @@ export const useFanflixStore = defineStore('fanflix', {
     campaigns: [],
     products: [],
     games: [],
+    loading: false,
   }),
   actions: {
     // Clear the store by resetting campaigns and products

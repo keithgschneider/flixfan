@@ -18,4 +18,6 @@ export interface Product {
   TagColor: string
   TagText: string
   ProductURL: string // URL for the product
+  IsSeen: boolean // Indicates if the product has been seen
+  IsLiked: boolean // Indicates if the product has been liked
 }

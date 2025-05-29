@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import type { Product } from '../types/Product' // Import the Product type
 
 // Define props to accept the filtered products

@@ -1,6 +1,15 @@
 <template>
   <footer class="sticky-footer">
     <RouterLink
+      to="/games"
+      class="footer-link"
+      :class="{ active: isActive('/games') }"
+      :aria-disabled="isActive('/games')"
+      :tabindex="isActive('/games') ? -1 : 0"
+    >
+      Games
+    </RouterLink>
+    <RouterLink
       to="/"
       class="footer-link"
       :class="{ active: isActive('/') }"
@@ -10,13 +19,13 @@
       Products
     </RouterLink>
     <RouterLink
-      to="/games"
+      to="/match"
       class="footer-link"
-      :class="{ active: isActive('/games') }"
-      :aria-disabled="isActive('/games')"
-      :tabindex="isActive('/games') ? -1 : 0"
+      :class="{ active: isActive('/match') }"
+      :aria-disabled="isActive('/match')"
+      :tabindex="isActive('/match') ? -1 : 0"
     >
-      Games
+      Match
     </RouterLink>
   </footer>
 </template>

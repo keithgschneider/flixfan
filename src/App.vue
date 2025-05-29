@@ -8,12 +8,17 @@ import StickyFooter from './components/StickyFooter.vue'
 onMounted(async () => {
   const fanflixStore = useFanflixStore()
 
+  fanflixStore.loading = true
+
   // Clear the store before loading new data
   fanflixStore.clear()
 
+  // Load data
   await loadCampaigns(fanflixStore)
   await loadProducts(fanflixStore)
   await loadGames(fanflixStore)
+
+  fanflixStore.loading = false
 })
 </script>
 

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
-
 // Props for the header
 defineProps({
   title: {
@@ -165,12 +163,17 @@ h1 {
   }
 
   .third {
-    justify-content: center; /* Center all items in stacked layout */
-    margin-bottom: 1rem; /* Add spacing between stacked items */
+    width: 100%; /* Full width for each item */
   }
 
   .third:last-child {
-    margin-bottom: 0; /* Remove margin for the last item */
+    margin-top: 1em; /* Add margin to the last item for spacing */
+  }
+
+  .third:first-child,
+  .third:nth-child(2),
+  .third:last-child {
+    justify-content: center; /* Center items on smaller screens */
   }
 }
 </style>
