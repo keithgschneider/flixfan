@@ -6,15 +6,19 @@
       <span v-if="icon2" :class="['icon', icon2Class]">{{ icon2 }}</span>
     </span>
     <span class="bucket-desc">{{ desc }}</span>
-    <span class="bucket-count">{{ count }}</span>
+    <span class="bucket-count">{{ products.length }}</span>
     <div v-if="showProduct && product" class="bucket-product">
       <img :src="`${product.ImageURL}?w=80`" :alt="product.Name" class="bucket-product-image" />
       <div class="bucket-product-title">{{ product.Name }}</div>
     </div>
+    <BucketCarousel :products="products" />
   </div>
 </template>
 
 <script setup lang="ts">
+import type { Product } from '@/types/Product'
+import BucketCarousel from './BucketCarousel.vue'
+
 defineProps<{
   bucketClass: string
   label: string
@@ -23,9 +27,9 @@ defineProps<{
   icon2?: string
   icon2Class?: string
   desc: string
-  count: number
+  products: Product[]
   showProduct?: boolean
-  product?: any
+  product?: Product
 }>()
 </script>
 
@@ -131,5 +135,25 @@ defineProps<{
     0 8px 32px 0 rgba(31, 38, 135, 0.18);
   border-color: #007bff;
   background: linear-gradient(135deg, #232526 0%, #2c5364 100%);
+}
+
+.bucket.top-left {
+  top: 5%;
+  left: 5%;
+}
+
+.bucket.top-right {
+  top: 5%;
+  right: 5%;
+}
+
+.bucket.bottom-left {
+  bottom: 10%;
+  left: 5%;
+}
+
+.bucket.bottom-right {
+  bottom: 10%;
+  right: 5%;
 }
 </style>

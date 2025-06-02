@@ -20,4 +20,5 @@ export interface Product {
   ProductURL: string // URL for the product
   IsSeen: boolean // Indicates if the product has been seen
   IsLiked: boolean // Indicates if the product has been liked
+  CategorizedIndex: number // Tracks when IsSeen or IsLiked has been set (higher = more recent)
 }

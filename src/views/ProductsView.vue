@@ -24,7 +24,8 @@ const filteredProducts = computed(() =>
       :totalCount="fanflixStore.products.length"
       @update:searchQuery="(value) => (searchQuery = value)"
     />
-    <ProductGrid :products="filteredProducts" />
+    <div v-if="fanflixStore.loading" class="loading-spinner"></div>
+    <ProductGrid v-else :products="filteredProducts" />
     <ScrollToTopButton />
   </main>
 </template>

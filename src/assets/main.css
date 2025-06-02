@@ -4,10 +4,9 @@
   font-weight: normal;
 }
 
-a,
-.green {
+a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: #ed2d92;
   transition: 0.4s;
   padding: 3px;
 }
@@ -22,5 +21,24 @@ a,
   body {
     display: flex;
     place-items: center;
+  }
+}
+
+.loading-spinner {
+  margin: 60px auto 40px auto;
+  border: 6px solid #444;
+  border-top: 6px solid #fcb12e;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
